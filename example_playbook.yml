@@ -1,0 +1,7 @@
+---
+- name: A play that sources stats from previous play in workflow
+  hosts: localhost
+  tasks:
+    - debug:
+        msg: IPs from previous play are "{{ item }}"
+      with_items: "{{ systems.public_ip }}"
