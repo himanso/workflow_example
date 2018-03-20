@@ -1,0 +1,22 @@
+---
+- name: Add hosts to group
+  hosts: localhost
+  tasks:
+    - name: Add hosts from previous values
+      add_host:
+        name: "{{ item }}"
+        group: newly_created
+        ansible_user: ec2-user
+      with_items: "{{ systems.public_ip }}"
+
+- name: Provision a MOTD example
+  hosts: newly_created
+  become: yes
+  tasks:
+    - name: Use a template file for MOTD to modify each system
+      template:
+        src: motd.j2
+        dest: /etc/motd
+
+  tags:
+    - callback
