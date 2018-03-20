@@ -30,4 +30,4 @@
   - name: "Set artifact values to pass to next playbook"
     set_stats:
       data:
-        systems: "{{ ec2 }}"
+        systems: "{{ ec2.instances }}"
