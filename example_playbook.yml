@@ -3,5 +3,5 @@
   hosts: localhost
   tasks:
     - debug:
-        msg: IPs from previous play are "{{ item }}"
-      with_items: "{{ systems.public_ip }}"
+        msg: IPs from previous play are "{{ item.public_ip }}"
+      with_items: "{{ systems }}"
