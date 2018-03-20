@@ -4,4 +4,4 @@
   tasks:
     - debug:
         msg: IPs from previous play are "{{ item.public_ip }}"
-      with_items: "{{ systems }}"
+      with_items: "{{ systems.instances }}"
